@@ -3,5 +3,10 @@
     "id": "nextjs-chatbot",
     "title": "nextjs-chatbot",
     "description": "A Next.js chat app wired to a Kuralle agent — streaming UI, thread history, and Postgres-ready persistence."
+  },
+  {
+    "id": "restaurant-order",
+    "title": "restaurant-order",
+    "description": "An order-taking agent built with Kuralle flows — branching menu (pizza/sushi), confirmation loop, and order placement. Ported from Pipecat."
   }
 ]
