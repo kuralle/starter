@@ -8,5 +8,35 @@
     "id": "restaurant-order",
     "title": "restaurant-order",
     "description": "An order-taking agent built with Kuralle flows — branching menu (pizza/sushi), confirmation loop, and order placement. Ported from Pipecat."
+  },
+  {
+    "id": "campus-bot",
+    "title": "campus-bot",
+    "description": "University student-relationship assistant — triage across academic advising, financial aid, and wellbeing specialists."
+  },
+  {
+    "id": "cedar-health",
+    "title": "cedar-health",
+    "description": "Multi-specialty clinic patient assistant — identity verification before any patient-specific tool, scheduling + triage."
+  },
+  {
+    "id": "chief-of-staff",
+    "title": "chief-of-staff",
+    "description": "Chief-of-staff agent for one leader — strategic comms, pre-meeting briefs, and commitment tracking."
+  },
+  {
+    "id": "hearth-bot",
+    "title": "hearth-bot",
+    "description": "B2C meal-kit subscription support — per-specialist tool scoping (retention vs box-issue vs general)."
+  },
+  {
+    "id": "knowledge-worker",
+    "title": "knowledge-worker",
+    "description": "Personal AI for a knowledge worker — triage to researcher / drafter / summarizer specialists over Notion + Linear."
+  },
+  {
+    "id": "ops-bot",
+    "title": "ops-bot",
+    "description": "Internal IT/HR operations bot — a single agent over Okta / Notion / Linear tools."
   }
 ]
