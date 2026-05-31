@@ -15,13 +15,13 @@ const ROLE =
  *        └─(closed)─▶ closed                          └─(revise)─▶ initial
  *
  * Each `reply` node shows the model only the functions relevant to its step (via
- * `tools`) and returns its next transition from the tool results; tool *executors*
- * are registered once on the agent's `effectTools`. The selected item rides in flow
- * state (`goto.data` → `Object.assign(state, …)`); the `place` action reads it and
- * places the order, and `end` reads the receipt back via state-aware instructions.
+ * `tools`) and returns its next transition from the tool results. The selected item
+ * rides in flow state (`goto.data` → `Object.assign(state, …)`); the `place` action
+ * reads it and places the order, and `end` reads the receipt back via state-aware
+ * instructions.
  */
 export function buildOrderFlow(model: LanguageModel) {
-  // ---- tools (defined once; exposed per-node via buildToolSet, executed via effectTools) ----
+  // ---- tools (defined once, exposed per-node via buildToolSet) ----
   const getDeliveryEstimate = defineTool({
     name: 'get_delivery_estimate',
     description: 'Tell the customer how long delivery will take.',
@@ -72,15 +72,6 @@ export function buildOrderFlow(model: LanguageModel) {
     input: z.object({}),
     execute: async () => ({ revise: true }),
   });
-
-  const effectTools = {
-    get_delivery_estimate: getDeliveryEstimate,
-    choose_category: chooseCategory,
-    select_pizza: selectPizza,
-    select_sushi: selectSushi,
-    complete_order: completeOrder,
-    revise_order: reviseOrder,
-  };
 
   // ---- nodes ----
   const end = reply({
@@ -171,12 +162,10 @@ export function buildOrderFlow(model: LanguageModel) {
     run: () => (isOpen() ? initial : closed),
   });
 
-  const flow = defineFlow({
+  return defineFlow({
     name: 'order',
     description: 'Greet, take a pizza or sushi order, confirm it, and place it with the kitchen.',
     start: kitchenCheck,
     nodes: [kitchenCheck, initial, choosePizzaNode, chooseSushiNode, confirm, place, closed, end],
   });
-
-  return { flow, effectTools };
 }
