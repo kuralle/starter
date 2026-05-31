@@ -1,7 +1,7 @@
 [
   {
     "id": "nextjs-chatbot",
-    "title": "Next.js Chatbot",
+    "title": "nextjs-chatbot",
     "description": "A Next.js chat app wired to a Kuralle agent — streaming UI, thread history, and Postgres-ready persistence."
   }
 ]
