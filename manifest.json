@@ -1,5 +1,10 @@
 [
   {
+    "id": "whatsapp-bot",
+    "title": "whatsapp-bot",
+    "description": "Deployable WhatsApp bot — bring your own Cloud API number, window-safe outbound via engagement policies (a closed-window message cant leak), optional Redis. One support flow over @kuralle-agents/messaging-meta."
+  },
+  {
     "id": "nextjs-chatbot",
     "title": "nextjs-chatbot",
     "description": "A Next.js chat app wired to a Kuralle agent — streaming UI, thread history, and Postgres-ready persistence."
