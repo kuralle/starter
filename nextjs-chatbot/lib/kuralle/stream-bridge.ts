@@ -45,7 +45,7 @@ function applyHarnessPart(
 ): void {
   switch (part.type) {
     case "text-delta": {
-      if (!part.text) {
+      if (!part.delta) {
         return;
       }
       if (!text.isTextStarted()) {
@@ -56,8 +56,17 @@ function applyHarnessPart(
       writer.write({
         type: "text-delta",
         id: text.getTextPartId(),
-        delta: part.text,
+        delta: part.delta,
       });
+      return;
+    }
+    case "text-cancel": {
+      // 0.4.x: a per-sentence gate block cancels the in-flight turn; close the
+      // current text part so the gate's fresh safe-message lifecycle starts clean.
+      if (text.isTextStarted()) {
+        writer.write({ type: "text-end", id: text.getTextPartId() });
+        text.setTextStarted(false);
+      }
       return;
     }
     case "tool-call": {

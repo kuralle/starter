@@ -162,7 +162,7 @@ async function runScenarioOnce(
 		try {
 			for await (const part of runtime.stream({ input: turn.input, sessionId })) {
 				const p = part as HarnessStreamPart;
-				if (p.type === 'text-delta') response += p.text;
+				if (p.type === 'text-delta') response += p.delta;
 				else if (p.type === 'tool-call') {
 					// Skip the internal handoff tool — it's an implementation detail of TriageAgent.
 					if (p.toolName !== 'handoff_to_agent') toolsCalled.push(p.toolName);

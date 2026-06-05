@@ -118,7 +118,10 @@ function buildSchedulingFlow(model: LanguageModel) {
 	const present = action({
 		id: 'present',
 		run: async (state, ctx) => {
-			ctx.emit({ type: 'text-delta', text: formatAppointmentSummary(state) });
+			const id = await ctx.uuid();
+			ctx.emit({ type: 'text-start', id });
+			ctx.emit({ type: 'text-delta', id, delta: formatAppointmentSummary(state) });
+			ctx.emit({ type: 'text-end', id });
 			return { end: 'completed' };
 		},
 	});
