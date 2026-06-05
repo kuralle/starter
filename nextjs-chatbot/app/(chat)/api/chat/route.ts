@@ -1,10 +1,10 @@
+import { harnessToUIMessageStream } from "@kuralle-agents/core";
 import {
   createUIMessageStream,
   createUIMessageStreamResponse,
 } from "ai";
 import { runtime } from "@/lib/kuralle/agent";
 import { persistThreadAfterTurn } from "@/lib/kuralle/persist-thread";
-import { bridgeHarnessStreamToUI } from "@/lib/kuralle/stream-bridge";
 import { ChatbotError } from "@/lib/errors";
 import { getUserId } from "@/lib/user";
 import { getTextFromMessage } from "@/lib/utils";
@@ -54,7 +54,8 @@ export async function POST(request: Request) {
           agentId: "chat-assistant",
           userId,
         });
-        await bridgeHarnessStreamToUI(writer, handle);
+        writer.merge(harnessToUIMessageStream(handle.events, { sessionId }));
+        await handle;
         await persistThreadAfterTurn(sessionId, input);
       },
     });

@@ -23,9 +23,9 @@ Open [http://localhost:3000](http://localhost:3000).
 | Chat UI | `components/chat/` — messages, input, sidebar history |
 | API routes | `app/(chat)/api/` — chat, history, thread load/delete |
 | Kuralle agent | `lib/kuralle/agent.ts` — `defineAgent` + `createRuntime` |
-| Stream bridge | `lib/kuralle/stream-bridge.ts` — `HarnessStreamPart` → AI SDK UI stream |
+| Native stream | `harnessToUIMessageStream` from `@kuralle-agents/core` — drives `useChat` with zero bridge |
 
-On each message, the route calls `runtime.run({ sessionId, input, userId })` where `sessionId` is the chat id from the UI. Threads are persisted in Kuralle `SessionStore` (in-memory by default, PostgreSQL when `POSTGRES_URL` is set).
+On each message, the route calls `runtime.run({ sessionId, input, userId })` where `sessionId` is the chat id from the UI. The turn's events are streamed straight to the client as a native AI SDK `UIMessageStream` via `harnessToUIMessageStream(handle.events)` — no hand-written `HarnessStreamPart` → `UIMessageChunk` glue. Threads are persisted in Kuralle `SessionStore` (in-memory by default, PostgreSQL when `POSTGRES_URL` is set).
 
 The sidebar loads `GET /api/history` (scoped by an anonymous cookie user id). Reopening a thread loads `GET /api/chat/[id]` and hydrates the chat UI.
 
