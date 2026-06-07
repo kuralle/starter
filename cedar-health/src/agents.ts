@@ -1,4 +1,3 @@
-import { tool as aiTool } from 'ai';
 import { z } from 'zod';
 import {
 	action,
@@ -246,7 +245,7 @@ OPERATING RULES:
 - Use the schedule-visit flow for booking, rescheduling context, or appointment questions.
 - Identity verification and patientId threading are handled by the flow — do not call FHIR tools yourself.`,
 		flows: [schedulingFlow],
-		effectTools: fhirTools.effectTools,
+		tools: fhirTools.effectTools,
 		knowledge: {},
 	});
 
@@ -267,14 +266,7 @@ DO NOT DIAGNOSE. Map symptoms to SELF_CARE, SCHEDULE_VISIT, NURSE_LINE, or URGEN
 		instructions: `${composePersonaPrompt(BuiltinPersonas.warm)}
 
 Handle billing for verified patients. Use run_verify_insurance when mrn, dob, invoiceId known. Never quote coverage from memory.`,
-		tools: {
-			...billingAgentTools.tools,
-			run_verify_insurance: aiTool({
-				description: verifyInsurance.description,
-				inputSchema: verifyInsuranceInput,
-			}) as (typeof billingAgentTools.tools)[string],
-		},
-		effectTools: { ...billingAgentTools.effectTools, run_verify_insurance: verifyInsurance },
+		tools: { ...billingAgentTools.effectTools, run_verify_insurance: verifyInsurance },
 		knowledge: {},
 	});
 
@@ -285,8 +277,7 @@ Handle billing for verified patients. Use run_verify_insurance when mrn, dob, in
 		instructions: `${composePersonaPrompt(BuiltinPersonas.warm)}
 
 Handle prescription refills. Verify identity first. requestRenewal when no refills remain.`,
-		tools: rxAgentTools.tools,
-		effectTools: rxAgentTools.effectTools,
+		tools: rxAgentTools.effectTools,
 		knowledge: {},
 	});
 

@@ -31,8 +31,7 @@ export function buildAgents(model: LanguageModel): AgentConfig[] {
 		name: 'General CoS Assistant',
 		model,
 		instructions: `Chief-of-staff direct-lookup assistant. Calendar, email, ticket fetches. Brief replies. Cite sources.`,
-		tools: allOrgTools.tools,
-		effectTools: allOrgTools.effectTools,
+		tools: allOrgTools.effectTools,
 		knowledge: {},
 	});
 
@@ -42,8 +41,7 @@ export function buildAgents(model: LanguageModel): AgentConfig[] {
 		model,
 		instructions: `Draft strategic communications for ONE leader. Read communication-norms first.
 NEVER autonomously send. Sign-off: —C`,
-		tools: commsTools.tools,
-		effectTools: commsTools.effectTools,
+		tools: commsTools.effectTools,
 		knowledge: {},
 	});
 
@@ -60,8 +58,7 @@ NEVER autonomously send. Sign-off: —C`,
 		name: 'Exec Briefer',
 		model,
 		instructions: `Produce pre-meeting briefs with Context, Recent activity, Open from prior, Recommended ask sections.`,
-		tools: execBrieferTools.tools,
-		effectTools: execBrieferTools.effectTools,
+		tools: execBrieferTools.effectTools,
 		knowledge: {},
 	});
 
@@ -70,8 +67,7 @@ NEVER autonomously send. Sign-off: —C`,
 		name: 'Commitment Tracker',
 		model,
 		instructions: `Track what the leader promised. Use listCommitments, logCommitment, updateCommitmentStatus.`,
-		tools: commitmentTools.tools,
-		effectTools: commitmentTools.effectTools,
+		tools: commitmentTools.effectTools,
 		knowledge: {},
 	});
 

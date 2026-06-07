@@ -38,8 +38,7 @@ OPERATING RULES (strict):
   ticket for unlisted software.
 - Keep replies short and direct (2-3 sentences).
 - When in doubt, escalate by filing a ticket — don't make the call yourself.`,
-		tools: opsTools.tools,
-		effectTools: opsTools.effectTools,
+		tools: opsTools.effectTools,
 		knowledge: {},
 		memory: { preload: { enabled: true }, ingest: { enabled: true } },
 	});

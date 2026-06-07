@@ -38,8 +38,7 @@ OPERATING RULES:
 - If the customer gives an email, call lookupSubscription({email}) first.
 - For skip-week / pause / address-change: act via the tool, then confirm in ONE short sentence.
 - If they ask to cancel, say you'll get the retention team to help.`,
-		tools: generalTools.tools,
-		effectTools: generalTools.effectTools,
+		tools: generalTools.effectTools,
 		knowledge: {},
 	});
 
@@ -53,8 +52,7 @@ OPERATING RULES:
 - ONE empathetic acknowledgement, then ONE relevant offer.
 - Call lookupSubscription({email}) FIRST for tenure-based offers.
 - If they say "just cancel", call cancelSubscription without an offer.`,
-		tools: retentionTools.tools,
-		effectTools: retentionTools.effectTools,
+		tools: retentionTools.effectTools,
 		knowledge: {},
 	});
 
@@ -67,8 +65,7 @@ OPERATING RULES:
 OPERATING RULES:
 - Look up the order, file via reportIssue.
 - CAP refunds at $50 without escalation.`,
-		tools: boxIssueTools.tools,
-		effectTools: boxIssueTools.effectTools,
+		tools: boxIssueTools.effectTools,
 		knowledge: {},
 	});
 

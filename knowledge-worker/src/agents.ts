@@ -36,8 +36,7 @@ export function buildAgents(model: LanguageModel): AgentConfig[] {
 		instructions: `${composePersonaPrompt(BuiltinPersonas.brief)}
 
 Personal assistant. Direct lookups only — calendar, email, ticket fetches.`,
-		tools: allTools.tools,
-		effectTools: allTools.effectTools,
+		tools: allTools.effectTools,
 		knowledge: {},
 		memory: { preload: { enabled: true }, ingest: { enabled: true } },
 	});
@@ -49,8 +48,7 @@ Personal assistant. Direct lookups only — calendar, email, ticket fetches.`,
 		instructions: `${composePersonaPrompt(BuiltinPersonas.brief)}
 
 Research specialist. Plan tools, synthesize TL;DR + bullets, cite LIN-NNN and page titles.`,
-		tools: allTools.tools,
-		effectTools: allTools.effectTools,
+		tools: allTools.effectTools,
 		knowledge: {},
 	});
 
@@ -61,8 +59,7 @@ Research specialist. Plan tools, synthesize TL;DR + bullets, cite LIN-NNN and pa
 		instructions: `${composePersonaPrompt(BuiltinPersonas.brief)}
 
 Compose emails and tickets. ALWAYS use draftReply. NEVER send autonomously.`,
-		tools: drafterTools.tools,
-		effectTools: drafterTools.effectTools,
+		tools: drafterTools.effectTools,
 		knowledge: {},
 	});
 
@@ -73,8 +70,7 @@ Compose emails and tickets. ALWAYS use draftReply. NEVER send autonomously.`,
 		instructions: `${composePersonaPrompt(BuiltinPersonas.brief)}
 
 TL;DR + 3-5 bullets + open questions only when needed.`,
-		tools: summarizerTools.tools,
-		effectTools: summarizerTools.effectTools,
+		tools: summarizerTools.effectTools,
 		knowledge: {},
 	});
 

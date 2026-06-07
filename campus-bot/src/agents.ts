@@ -149,8 +149,7 @@ OPERATING RULES:
 - For probation (GPA < 2.0), surface gently and offer bookAdvisorMeeting.
 - Reference help-center knowledge in your system prompt. Do not invent policies.
 - Be warm, brief, direct. 2-4 sentences for chat.`,
-		tools: advisorTools.tools,
-		effectTools: advisorTools.effectTools,
+		tools: advisorTools.effectTools,
 		knowledge: {},
 	});
 
@@ -165,8 +164,7 @@ OPERATING RULES:
 - Reference help-center knowledge. Do not invent policies.
 - If SAP is warning or suspended, explain appeal process gently.
 - Be warm, brief, direct.`,
-		tools: financialAidTools.tools,
-		effectTools: financialAidTools.effectTools,
+		tools: financialAidTools.effectTools,
 		knowledge: {},
 	});
 
